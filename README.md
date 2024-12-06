@@ -25,16 +25,3 @@ For support or inquiries, please contact us at [yitbarektsige@outlook.com](mailt
 
 This project is licensed under the Apache License. See the [LICENSE](LICENSE) file for more details.
   
-## Installation
-
-### Prerequisites
-
-- **Operating System**: Windows 10 or later / macOS Mojave or later
-- **RAM**: Minimum 4 GB (8 GB recommended)
-- **Disk Space**: At least 1 GB of free space
-
-### Steps to Install
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/moha-office-solution-suite.git
