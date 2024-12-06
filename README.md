@@ -14,7 +14,7 @@ The **MOHA Office Solution Suite** is a comprehensive collection of applications
 To install the MOHA Office Solution Suite:
 
 1. Download the latest version from [our website](https://github.com/yitbarek-tsige/MOSS/releases/download/Office/MOSS.exe).
-2. Run the installer and follow the on-screen instructions.
+2. Run the executable and follow the on-screen instructions.
 3. Launch the application from your desktop or start menu.
 
 ## Contact
