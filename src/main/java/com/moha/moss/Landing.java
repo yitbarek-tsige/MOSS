@@ -873,7 +873,7 @@ public void users(String username){
         try {      
             String x = a.addDigitalStamp(pdfFile_Name.getName(), stampText);  
             if(x!=null){            
-             dbService.saveMessage(x, "broadcast", username, selectedMessage.getToDept(), AppprovedMessage);
+             //dbService.saveMessage(x, "broadcast", username, selectedMessage.getToDept(), AppprovedMessage);
              dbService.saveMessage(x, "broadcast", username, dbService.DeptFetcher(selectedMessage.getUsername()), AppprovedMessage);
              JOptionPane.showMessageDialog(this, "Document Approved!");}
             else{
