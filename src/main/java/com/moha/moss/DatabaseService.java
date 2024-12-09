@@ -68,6 +68,32 @@ public boolean signup(String department, String username, String password) throw
         }
     }
 
+    public boolean signupMessages(String department, String username) throws Exception {
+        String query = "SELECT MessageID FROM messages WHERE MessageType = 'broadcast' AND ToDep = ?";
+        try (Connection conn = getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
+
+            pstmt.setString(1, department);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    int MessageID = rs.getInt("MessageID");
+                    String sql3 = "INSERT INTO usermessage (user_id, message_id, is_read) VALUES (?, ?, ?)";
+
+                    try (PreparedStatement pst1 = conn.prepareStatement(sql3)) {
+                        pst1.setString(1, username);
+                        pst1.setInt(2, MessageID);
+                        pst1.setBoolean(3, false);
+                        pst1.executeUpdate();
+                    }
+                }
+                return true; // Return true if any messages were inserted
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace(); // Log the exception for debugging
+            return false; // Return false on exception
+        }
+    }
+
 
 public void saveMessage(String file_name, String MessType, String sender, String recipient, String message) throws Exception {
     List<String> usernames = new ArrayList<>();

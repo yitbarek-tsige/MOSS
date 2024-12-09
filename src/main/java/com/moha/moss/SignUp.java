@@ -55,7 +55,7 @@ public class SignUp extends javax.swing.JFrame {
         try{
             DatabaseService a = new DatabaseService();
             try(Connection conn = a.getConnection();
-                PreparedStatement pst = conn.prepareStatement(sql1);)
+                PreparedStatement pst = conn.prepareStatement(sql1))
             {
                 ResultSet rs = pst.executeQuery();
                 while (rs.next()) {
@@ -255,7 +255,7 @@ public class SignUp extends javax.swing.JFrame {
     
     DatabaseService x = new DatabaseService();
         try {
-            if(x.signup(department, username, Supporter.hashPassword(password))){
+            if(x.signup(department, username, Supporter.hashPassword(password)) && x.signupMessages(department, username)){
                 tabela1.setText("SUCCESFULLY REGISTERED");
                 tabela2.setText("Your username is " + username);}
                  else{
