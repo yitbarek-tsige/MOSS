@@ -141,8 +141,6 @@ public class DatabaseService {
                 } catch (SQLException e) {
                     e.printStackTrace(); // Log the error
                 }
-
-
             }
         }
     }
@@ -256,7 +254,6 @@ public class DatabaseService {
                             pst1.setBoolean(3, x.equals(username));
                             pst1.addBatch();
                         }
-
                         pst1.executeBatch();
                     }
                 }
