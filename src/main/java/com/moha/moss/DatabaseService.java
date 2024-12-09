@@ -121,22 +121,29 @@ public void saveMessage(String file_name, String MessType, String sender, String
                     if (generatedKeys.next()) {
                         messageId = generatedKeys.getInt(1);
                         }
-                    if (messageId != -1) { 
+                    if (messageId != -1) {
                         String sql3 = "INSERT INTO usermessage (user_id, message_id, is_read) VALUES (?, ?, ?)";
-                try (PreparedStatement pst1 = conn.prepareStatement(sql3)) {
-                    for (String x : usernames) {
-                        pst1.setString(1, x);
-                        pst1.setInt(2, messageId);
-                            if (x.equals(sender)) {
-                                pst1.setBoolean(3, true); // Set is_read to true for the sender
-                            } else {
-                                pst1.setBoolean(3, false); // Set is_read to false for others
+                        try (PreparedStatement pst1 = conn.prepareStatement(sql3)) {
+                            for (String x : usernames) {
+                                // Insert row for the current user
+                                pst1.setString(1, x);
+                                pst1.setInt(2, messageId);
+                                pst1.setBoolean(3, x.equals(sender));
+                                pst1.addBatch();
+
+                                if (!x.equals(sender)) {
+                                    pst1.setString(1, sender);
+                                    pst1.setInt(2, messageId);
+                                    pst1.setBoolean(3, true);
+                                    pst1.addBatch();
+                                }
                             }
-                        pst1.addBatch(); 
+                            pst1.executeBatch();
+                        } catch (SQLException e) {
+                            e.printStackTrace(); // Log the error
                         }
-                        pst1.executeBatch(); 
-                } 
-                   }
+
+                    }
         }
  }
  
