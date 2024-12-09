@@ -870,7 +870,6 @@ public void users(String username){
                 LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         String AppprovedMessage = "Document have been approved and digitally stamped by " + username;
 
-
         try {      
             String x = a.addDigitalStamp(pdfFile_Name.getName(), stampText);  
             if(x!=null){            

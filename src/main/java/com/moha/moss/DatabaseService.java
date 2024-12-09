@@ -213,7 +213,7 @@ public class DatabaseService {
     }
 
     public String DeptFetcher(String username) {
-        String query = "SELECT EmpDep FROM login WHERE EmpUser = ?";
+        String query = "SELECT EmpDep FROM login WHERE EmpUserName = ?";
 
         try (Connection conn = getConnection();
              PreparedStatement preparedStatement = conn.prepareStatement(query)) {
