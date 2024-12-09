@@ -212,6 +212,25 @@ public class DatabaseService {
         return messages;
     }
 
+    public String DeptFetcher(String username) {
+        String query = "SELECT EmpDep FROM login WHERE EmpUser = ?";
+
+        try (Connection conn = getConnection();
+             PreparedStatement preparedStatement = conn.prepareStatement(query)) {
+
+            preparedStatement.setString(1, username);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+               return resultSet.getString("EmpDep");
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     public boolean sendRequest(String file_path, String username, String department, String note, String messType) throws Exception {
         List<String> usernames = new ArrayList<>();

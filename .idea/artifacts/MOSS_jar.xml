@@ -3,6 +3,11 @@
     <output-path>$PROJECT_DIR$/../..</output-path>
     <root id="archive" name="MOSS.jar">
       <element id="module-output" name="MOSS" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../Desktop/slf4j-api-2.0.16.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../Downloads/Compressed/mysql-connector-j-9.1.0/mysql-connector-j-9.1.0/mysql-connector-j-9.1.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../Downloads/Compressed/iText7-Core-7.1.3/layout-7.1.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../Downloads/Compressed/iText7-Core-7.1.3/kernel-7.1.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../Downloads/Compressed/iText7-Core-7.1.3/io-7.1.3.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>
