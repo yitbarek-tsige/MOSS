@@ -125,24 +125,18 @@ public class DatabaseService {
             if (messageId != -1) {
                 String sql3 = "INSERT INTO usermessage (user_id, message_id, is_read) VALUES (?, ?, ?)";
                 try (PreparedStatement pst1 = conn.prepareStatement(sql3)) {
-                    // Case 1: If the sender is not in the usernames list, add sender first
                     if (!usernames.contains(sender)) {
-                        // Insert a row for the sender with is_read = true
                         pst1.setString(1, sender);
                         pst1.setInt(2, messageId);
                         pst1.setBoolean(3, true);
                         pst1.addBatch();
                     }
-
-                    // Case 2: Insert rows for all users in the usernames list
                     for (String x : usernames) {
                         pst1.setString(1, x);
                         pst1.setInt(2, messageId);
-                        pst1.setBoolean(3, x.equals(sender)); // true for sender, false for others
+                        pst1.setBoolean(3, x.equals(sender));
                         pst1.addBatch();
                     }
-
-                    // Execute the batch after all rows are added
                     pst1.executeBatch();
                 } catch (SQLException e) {
                     e.printStackTrace(); // Log the error
