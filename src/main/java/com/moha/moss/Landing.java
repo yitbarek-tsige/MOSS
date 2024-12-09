@@ -103,7 +103,7 @@ public void users(String username){
         try{
             DatabaseService a = new DatabaseService();
             try(Connection conn = a.getConnection();
-                PreparedStatement pst = conn.prepareStatement(sql1);)
+                PreparedStatement pst = conn.prepareStatement(sql1))
             {
                 ResultSet rs = pst.executeQuery();
                 while (rs.next()) {
@@ -872,8 +872,7 @@ public void users(String username){
 
         try {      
             String x = a.addDigitalStamp(pdfFile_Name.getName(), stampText);  
-            if(x!=null){            
-             //dbService.saveMessage(x, "broadcast", username, selectedMessage.getToDept(), AppprovedMessage);
+            if(x!=null){
              dbService.saveMessage(x, "broadcast", username, dbService.DeptFetcher(selectedMessage.getUsername()), AppprovedMessage);
              JOptionPane.showMessageDialog(this, "Document Approved!");}
             else{
